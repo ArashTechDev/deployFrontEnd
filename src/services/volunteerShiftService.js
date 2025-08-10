@@ -1,6 +1,6 @@
 // frontend/src/services/volunteerShiftService.js
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001/api';
+const API_BASE_URL = `${process.env.REACT_APP_API_URL}/api` || 'http://localhost:3001/api';
 
 // Helper function to get auth token
 const getAuthToken = () => {

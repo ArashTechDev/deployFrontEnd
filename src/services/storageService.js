@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = 'http://localhost:3001/api/storage';
+const baseURL = `${process.env.REACT_APP_API_URL}/api/storage` || 'http://localhost:3001/api/storage';
 
 // Create storage location
 export const createStorageLocation = async (data) => {
