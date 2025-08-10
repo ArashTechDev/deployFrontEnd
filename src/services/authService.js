@@ -33,7 +33,7 @@ export const registerUser = async userData => {
 
 export const loginUser = async credentials => {
   try {
-    const res = await axios.post(`${API}/login`, credentials);
+    const res = await axios.post(`${API}/api/auth/login`, credentials);
     if (res.data.success && res.data.token) {
       // Store token with consistent key
       localStorage.setItem(TOKEN_KEY, res.data.token);
@@ -87,7 +87,7 @@ export const logoutUser = async () => {
 
 export const verifyEmail = async token => {
   try {
-    const res = await axios.get(`${API}/verify-email?token=${token}`);
+    const res = await axios.get(`${API}/api/auth/verify-email?token=${token}`);
     return res.data;
   } catch (error) {
     console.error('Email verification error:', error.response?.data || error.message);
@@ -97,7 +97,7 @@ export const verifyEmail = async token => {
 
 export const resendVerificationEmail = async email => {
   try {
-    const res = await axios.post(`${API}/resend-verification`, { email });
+    const res = await axios.post(`${API}/api/auth/resend-verification`, { email });
     return res.data;
   } catch (error) {
     console.error('Resend verification error:', error.response?.data || error.message);
@@ -123,7 +123,7 @@ export const getCurrentUser = async () => {
     }
 
     console.log('Making request to /me endpoint');
-    const res = await axios.get(`${API}/me`, {
+    const res = await axios.get(`${API}/api/auth/me`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
