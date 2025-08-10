@@ -1,7 +1,7 @@
 // frontend/src/services/authService.js
 import axios from 'axios';
 
-const API = 'http://localhost:3001/api/auth';
+const API = process.env.REACT_APP_API_URL;
 
 // Consistent token key - using 'authToken' throughout the app
 const TOKEN_KEY = 'authToken';
@@ -23,7 +23,7 @@ axios.interceptors.response.use(
 
 export const registerUser = async userData => {
   try {
-    const res = await axios.post(`${API}/register`, userData);
+    const res = await axios.post(`${API}/api/auth/register`, userData);
     return res.data;
   } catch (error) {
     console.error('Registration error:', error.response?.data || error.message);
